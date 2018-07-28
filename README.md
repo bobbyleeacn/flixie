@@ -1,9 +1,10 @@
 # Project 1 - *Flixie*
 
-**Flixie** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
-DEMO Project Here: https://awesome-banach-a3bce8.netlify.com
+**Flixie** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).  
+Time spent: **10+** hours spent in total . 
 
-Time spent: **10+** hours spent in total
+[DEMO](https://awesome-banach-a3bce8.netlify.com) Project Here: https://awesome-banach-a3bce8.netlify.com
+
 
 ## User Stories
 
@@ -25,3 +26,6 @@ Time spent: **10+** hours spent in total
 ## Future improvements
 - Infinite Scrolling, Paging
 - Carousel 
+
+![alt tag](https://github.com/bobbyleeacn/flixie/blob/master/src/img/flixie1.png)
+![alt tag](https://github.com/bobbyleeacn/flixie/blob/master/src/img/flixie2.png)
