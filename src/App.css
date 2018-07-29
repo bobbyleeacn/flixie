@@ -2,6 +2,9 @@
   text-align: left;
 }
 
+.mainContainer {
+  width: 50% !important
+}
 
 .modal-content{
   color: #F1F1F1 !important;
@@ -90,13 +93,19 @@ input.gImage {
 
 @media (max-width: 600px) {
   p {
-    font-size: 8px;
+    font-size: 10px !important;
   }
   h6 {
     font-size: 10px !important;
   }
   h5 {
     font-size: 12px !important;
+  }
+  .mainContainer {
+    width: 100% !important
+  }
+  .header {
+    width: 100% !important
   }
 }
 

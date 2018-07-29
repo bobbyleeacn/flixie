@@ -133,7 +133,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <Container style={{width: '50%'}}>
+        <Container className='mainContainer'>
           {this.state.isLoading ? <div><Spinner name="line-scale-pulse-out-rapid" color="coral"/>Loading ... </div> :
             <div>
               <div className='header'>
