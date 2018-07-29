@@ -18,13 +18,14 @@ Time spent: **10+** hours spent in total .
 
 ## Additional Features
 - Sort Movies by rating, popularity, release date.
-- Fade Effects when switching between views.
+- Page navigation for next and previous pages
+- Fade Effects when switching between views and pages.
 - Movie Poster Lightbox on click
 - Toggle between standard and gallery layout options
 - Modal effect on gallery view click
 
 ## Future improvements
-- Infinite Scrolling, Paging
+- Infinite Scrolling
 - Carousel 
 
 ![alt tag](https://github.com/bobbyleeacn/flixie/blob/master/src/img/flixie1.png)
