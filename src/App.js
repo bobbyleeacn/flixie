@@ -12,25 +12,56 @@ export default class App extends Component {
     super(props);
     this.state = {
       movies: [],
+      moviesAll: [],
       moviesCopy: [],
       isLoading: true,
       galleryView: false,
       fadeIn: true,
       modal: false,
-      modalMovie: {}
+      modalMovie: {},
+      pageIndex: 1
     }
   }
 
   async componentDidMount() {
     // await new Promise(resolve => setTimeout(resolve, 5000));   // activate to test spinner only
     this.fetchData();
+    // this.fetchAllData(this.state.totalPages);
   };
 
-  fetchData() {
-    let url = 'https://api.themoviedb.org/3/movie/now_playing?api_key=5a884e8cc149705048e256ab1d7bd555&page=4'
-    fetch(url)
+  // fetch from all pages and store all movie objects in a single array
+  fetchAllData(pages) {
+    let url = 'https://api.themoviedb.org/3/movie/now_playing?api_key=5a884e8cc149705048e256ab1d7bd555'
+    let moviesAll = [];
+    for (let i=1; i<pages; i++) {
+      fetch(`${url}&page=${i}`)
       .then(response => response.json())
-      .then(data => this.setState({movies: data.results, moviesCopy: data.results, isLoading: false}));
+      .then(data => data.results.map(result=>moviesAll.push(result)))
+    }
+    this.setState({moviesAll: moviesAll})
+  };
+    
+
+  fetchData(page = 1) {
+    let url = 'https://api.themoviedb.org/3/movie/now_playing?api_key=5a884e8cc149705048e256ab1d7bd555'
+    fetch(`${url}&page=${page}`)
+      .then(response => response.json())
+      .then(data =>
+        {
+          // Attach new movies to 'All Movies' array each time a new page is fetched
+          const moviesAll = this.state.moviesAll
+          if (this.state.pageIndex > moviesAll.length) {
+            moviesAll.push(data.results)
+            this.setState({moviesAll: moviesAll})
+          }
+          this.setState(
+            {
+              movies: data.results, 
+              moviesCopy: data.results, 
+              isLoading: false,
+              totalPages: data.total_pages
+            })
+        });
   }
 
   filterMovies(text) {
@@ -84,6 +115,21 @@ export default class App extends Component {
     });
   }
 
+  handlePage(direction) {
+    let page = this.state.pageIndex;
+      if (direction === 'next') {
+        page += 1
+      } else if (direction === 'previous' && page !== 1) {
+        page -= 1
+      } else {
+        return;
+      }
+    this.fetchData(page)
+    this.setState({
+      pageIndex: page
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -98,6 +144,7 @@ export default class App extends Component {
                   changeView={()=> this.changeView()}
                   galleryView={this.state.galleryView}
                   toggleFade={()=> this.state.toggleFade}
+                  handlePage={(direction)=>this.handlePage(direction)}
                 />
               </div>
               <div>

@@ -22,7 +22,7 @@ export default class MovieList extends Component {
 // Stateless React Component
 // const Movie = (props) => {
 // destructuring so we no longer have to use 'props.title' etc.
-const Movie = ({title, overview, poster_path, release_date, vote_average, popularity}) => {
+const Movie = ({title, overview, poster_path, release_date, vote_average}) => {
   return (
     <div className='cardContainer'>
       <div className='cardImage'>

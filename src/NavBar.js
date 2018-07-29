@@ -29,10 +29,13 @@ export default class NavBar extends React.Component {
     return (
       <div>
         <Navbar color="#333" light expand="md">
+          <Arrow direction="left" clickFunction={ ()=>this.props.handlePage('previous') } glyph="&#9664;" />&emsp;
           <NavbarBrand tag='span' href="/">F L I X I E</NavbarBrand>
+          <Arrow direction="right" clickFunction={ ()=>this.props.handlePage('next') } glyph="&#9654;" />
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
+          
               <NavItem>
                 <SearchBar handleSearch = {searchText => this.props.handleSearch(searchText)}/>
               </NavItem>
@@ -54,3 +57,12 @@ export default class NavBar extends React.Component {
     );
   }
 }
+
+// functional component
+const Arrow = ({ direction, clickFunction, glyph }) => (
+	<span 
+		className={ `slide-arrow ${direction}` } 
+		onClick={ clickFunction }>
+		{ glyph } 
+	</span>
+);
