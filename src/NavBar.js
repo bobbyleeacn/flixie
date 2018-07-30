@@ -25,6 +25,7 @@ export default class NavBar extends React.Component {
       isOpen: !this.state.isOpen
     });
   }
+
   render() {
     return (
       <div>
@@ -40,15 +41,16 @@ export default class NavBar extends React.Component {
                 <SearchBar handleSearch = {searchText => this.props.handleSearch(searchText)}/>
               </NavItem>
               <NavItem>
-              <Button onClick = {() => {this.props.handleFetch(); this.props.toggleFade()}} size='sm'>Refresh</Button>
+                <Button onClick = {() => {this.props.handleFetch(); this.props.toggleFade(); this.toggle()}} size='sm'>Refresh</Button>
               </NavItem>
               <NavItem>
-              <SortButton 
-                sortByClick={(property) => this.props.sortByClick(property)}
-                changeView={() => this.props.changeView()}
-                galleryView={this.props.galleryView}
-                toggleFade={()=> this.props.toggleFade()} > View
-              </SortButton>
+                <SortButton 
+                  sortByClick={(property) => this.props.sortByClick(property)}
+                  changeView={() => this.props.changeView()}
+                  galleryView={this.props.galleryView}
+                  toggleFade={()=> this.props.toggleFade()}
+                  toggle={this.toggle} > View 
+                </SortButton>
               </NavItem>
             </Nav>
           </Collapse>

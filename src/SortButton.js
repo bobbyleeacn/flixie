@@ -24,11 +24,11 @@ export default class SortButton extends React.Component {
           View
         </DropdownToggle>
         <DropdownMenu style={{backgroundColor: '#CCD1D1'}}>
-          <DropdownItem onClick={()=> this.props.sortByClick('vote_average')}>Rating</DropdownItem>
-          <DropdownItem onClick={()=> this.props.sortByClick('popularity')}>Popularity</DropdownItem>
-          <DropdownItem onClick={()=> this.props.sortByClick('release_date')}>Release Date</DropdownItem>
+          <DropdownItem onClick={()=> {this.props.sortByClick('vote_average'); this.props.toggle(); }} >Rating</DropdownItem>
+          <DropdownItem onClick={()=> {this.props.sortByClick('popularity'); this.props.toggle()}}>Popularity</DropdownItem>
+          <DropdownItem onClick={()=> {this.props.sortByClick('release_date'); this.props.toggle()}}>Release Date</DropdownItem>
           <DropdownItem divider />
-          <DropdownItem onClick={()=> {this.props.changeView(); this.props.toggleFade()}}> 
+          <DropdownItem onClick={()=> {this.props.changeView(); this.props.toggleFade(); this.props.toggle()}}> 
             {this.props.galleryView ? 'Standard View' : 'Gallery View'}
           </DropdownItem>
         </DropdownMenu>
